@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Протокол</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,system-ui,sans-serif;background:#F1F5F9;min-height:100vh;padding:16px 12px 60px}
+.h{text-align:center;padding:20px 0 16px}
+.h1{font-size:11px;font-weight:800;color:#8B5CF6;letter-spacing:2.5px;text-transform:uppercase}
+.h2{font-size:24px;font-weight:900;color:#0F172A;margin-top:6px}
+.h3{font-size:13px;color:#64748B;margin-top:6px}
+.h4{font-size:11px;color:#94A3B8;margin-top:4px}
+
+details{border-radius:18px;padding:4px 16px 4px;margin-bottom:12px;border:2px solid transparent}
+summary{display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer;list-style:none;-webkit-appearance:none}
+summary::-webkit-details-marker{display:none}
+summary::marker{display:none}
+.ic{font-size:26px}
+.tm{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.tl{font-size:20px;font-weight:900;color:#1E293B;margin-top:1px}
+summary::after{content:"▼";margin-left:auto;font-size:14px;transition:transform 0.25s}
+details[open] summary::after{transform:rotate(180deg)}
+
+.it{display:flex;gap:10px;margin-bottom:8px;padding:10px 12px;background:rgba(255,255,255,0.75);border-radius:12px;align-items:flex-start}
+.ii{font-size:15px;flex-shrink:0;margin-top:1px}
+.ix{font-size:13px;font-weight:600;color:#1E293B;line-height:1.45}
+.iw{font-size:11px;color:#64748B;margin-top:3px;line-height:1.35}
+
+.fb{margin-top:4px;margin-bottom:12px;padding:14px;background:rgba(255,255,255,0.88);border-radius:14px}
+.ft{font-size:13px;font-weight:800;margin-bottom:3px}
+.fg{font-size:11px;color:#64748B;margin-bottom:10px;font-weight:600}
+.fo{font-size:12.5px;color:#334155;margin-bottom:6px;padding-left:16px;position:relative;line-height:1.45}
+.fo::before{content:"•";position:absolute;left:0}
+.fr{font-size:11.5px;color:#DC2626;margin-top:10px;font-weight:600;padding:8px 10px;background:#FEF2F2;border-radius:8px;line-height:1.4}
+.fg2{font-size:11.5px;color:#15803D;margin-top:10px;font-weight:600;padding:8px 10px;background:#F0FDF4;border-radius:8px;line-height:1.4}
+
+.wd{display:flex;gap:12px;margin-bottom:8px;padding:10px 12px;background:rgba(255,255,255,0.75);border-radius:12px;align-items:center}
+.wb{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0}
+.wn{font-size:13px;font-weight:700;color:#1E293B}
+.wt{font-size:11px;color:#64748B;margin-top:2px}
+
+.ri{margin-bottom:8px;padding:12px 14px;background:rgba(255,255,255,0.75);border-radius:12px}
+.rm{font-size:14px;font-weight:700;color:#1E293B}
+.rd{font-size:11.5px;color:#64748B;margin-top:3px;line-height:1.4}
+
+.gc{margin-bottom:8px;padding:10px 14px;background:rgba(255,255,255,0.75);border-radius:12px}
+.gn{font-size:12px;font-weight:700;margin-bottom:3px}
+.gl{font-size:12.5px;color:#334155;line-height:1.5}
+
+.foot{text-align:center;padding:16px 20px;margin-top:8px;background:rgba(255,255,255,0.6);border-radius:16px;font-size:11px;color:#94A3B8;line-height:1.6}
+
+.c1{background:linear-gradient(135deg,#FFFBEB,#FEF3C7);border-color:rgba(245,158,11,0.12)}.c1 .tm,.c1 .ft{color:#D97706}.c1 summary::after{color:#F59E0B}
+.c2{background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:rgba(16,185,129,0.12)}.c2 .tm,.c2 .ft{color:#059669}.c2 summary::after{color:#10B981}
+.c3{background:linear-gradient(135deg,#F5F3FF,#EDE9FE);border-color:rgba(139,92,246,0.12)}.c3 .tm,.c3 .ft{color:#7C3AED}.c3 summary::after{color:#8B5CF6}
+.c4{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-color:rgba(59,130,246,0.12)}.c4 .tm,.c4 .ft{color:#2563EB}.c4 summary::after{color:#3B82F6}
+.c5{background:linear-gradient(135deg,#EEF2FF,#E0E7FF);border-color:rgba(99,102,241,0.12)}.c5 .tm{color:#4F46E5}.c5 summary::after{color:#6366F1}
+.c6{background:linear-gradient(135deg,#F0FDFA,#CCFBF1);border-color:rgba(20,184,166,0.12)}.c6 .ft{color:#0D9488}.c6 summary::after{color:#14B8A6}
+.c7{background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border-color:rgba(16,185,129,0.12)}.c7 summary::after{color:#10B981}
+.c8{background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-color:rgba(245,158,11,0.12)}.c8 summary::after{color:#F59E0B}
+.c9{background:linear-gradient(135deg,#FDF4FF,#FAE8FF);border-color:rgba(168,85,247,0.12)}.c9 summary::after{color:#A855F7}.c9 .gn{color:#9333EA}
+</style>
+</head>
+<body>
+
+<div class="h">
+<div class="h1">DNA-BASED PROTOCOL</div>
+<div class="h2">Щоденний протокол</div>
+<div class="h3">186 см · 64 кг · Ціль: 75 кг · Сова</div>
+<div class="h4">Тапни на картку щоб розгорнути</div>
+</div>
+
+<details class="c1"><summary><span class="ic">☀️</span><div><div class="tm">07:00 – 10:00</div><div class="tl">Ранок</div></div></summary>
+<div class="it"><span class="ii">💧</span><div><div class="ix">Склянка води 300 мл + щіпка солі + лимон</div><div class="iw">Запуск метаболізму, електроліти для мітохондрій</div></div></div>
+<div class="it"><span class="ii">🐕</span><div><div class="ix">Прогулянка з собакою 20-30 хв</div><div class="iw">Денне світло → стоп мелатонін. Без цього сова гальмує до обіду</div></div></div>
+<div class="it"><span class="ii">🧘</span><div><div class="ix">Медитація 10-15 хв</div><div class="iw">Кортизол ↓ (генетично високий), фокус для СДВГ</div></div></div>
+<div class="it"><span class="ii">💊</span><div><div class="ix">Сертралін, Атомоксетин, D3, CoQ10, Мульті (1 табл), Omega-3, Lion's Mane</div><div class="iw">З жирною їжею — D3, CoQ10, Omega-3 жиророзчинні</div></div></div>
+<div class="fb"><div class="ft">Сніданок — БІЛОК + ЖИР + трохи вуглеводів</div><div class="fg">Ціль: ~700-800 ккал, 40-50 г білка</div>
+<div class="fo">3 яйця (омлет) + пів авокадо + шпинат + тост</div>
+<div class="fo">Вівсянка + 2 яйця + горіхи + ягоди</div>
+<div class="fo">Яєшня з лососем + овочі</div>
+<div class="fo">Йогурт (кокосовий) + горіхи + банан + чіа</div>
+<div class="fr">⛔ Ніколи натще: каву, солодкі каші, тости з джемом, сік</div></div>
+</details>
+
+<details class="c2"><summary><span class="ic">🍽️</span><div><div class="tm">13:00 – 14:00</div><div class="tl">Обід</div></div></summary>
+<div class="it"><span class="ii">💊</span><div><div class="ix">Мульті (2-га табл), Omega-3 (2-й), Інозитол</div></div></div>
+<div class="fb"><div class="ft">Обід — найбільший прийом їжі</div><div class="fg">Ціль: ~900-1000 ккал, 40-50 г білка</div>
+<div class="fo">Лосось/скумбрія 200 г + гречка + салат + оливкова олія</div>
+<div class="fo">Курка 200 г + батат + броколі + оливкова олія</div>
+<div class="fo">Яловичина/печінка 150 г + рис нешліфований + овочі</div>
+<div class="fo">Сочевиця/нут 200 г + кіноа + овочі + авокадо</div>
+<div class="fr">⛔ Без десерту одразу після. Фрукти — через 30-60 хв</div></div>
+</details>
+
+<details class="c3"><summary><span class="ic">🥜</span><div><div class="tm">16:00 – 17:00</div><div class="tl">Перекус</div></div></summary>
+<div class="fb"><div class="ft">Підтримати енергію до вечері</div><div class="fg">Ціль: ~300-400 ккал, 15-20 г білка</div>
+<div class="fo">Горіхи 40 г + банан</div>
+<div class="fo">Протеїновий коктейль + банан + мигдальне масло</div>
+<div class="fo">Хумус + овочі + горіхи</div>
+<div class="fo">2 варені яйця + горіхи + фрукт</div>
+<div class="fo">Темний шоколад 85% (2-3 квадратики) + горіхи</div>
+<div class="fg2">❗ При 64 кг — не пропускай перекус</div></div>
+</details>
+
+<details class="c4"><summary><span class="ic">🌙</span><div><div class="tm">19:00 – 20:00</div><div class="tl">Вечеря</div></div></summary>
+<div class="it"><span class="ii">🐕</span><div><div class="ix">Вечірня прогулянка з собакою 20-30 хв</div><div class="iw">Знижує кортизол, покращує травлення</div></div></div>
+<div class="fb"><div class="ft">Вечеря — білок + жир + овочі</div><div class="fg">Ціль: ~700-800 ккал, 35-40 г білка</div>
+<div class="fo">Риба 200 г + великий салат + авокадо + оливкова олія</div>
+<div class="fo">Курка 200 г + тушковані овочі + оливкова олія</div>
+<div class="fo">Омлет з 3-4 яєць + овочі + горіхи</div>
+<div class="fo">Лосось + шпинат + гарбузове насіння</div>
+<div class="fr">⛔ Без пасти, хлібу, солодкого — поганий сон</div></div>
+</details>
+
+<details class="c5"><summary><span class="ic">😴</span><div><div class="tm">21:00 – 23:00</div><div class="tl">Перед сном</div></div></summary>
+<div class="it"><span class="ii">💊</span><div><div class="ix">Магній гліцинат 300 мг</div><div class="iw">Знижує кортизол, покращує сон, кофактор АТФ</div></div></div>
+<div class="it"><span class="ii">🔅</span><div><div class="ix">Приглушити світло за 1.5 год до сну</div><div class="iw">Мелатонін — у тебе варіант ризику MTNR1B</div></div></div>
+<div class="it"><span class="ii">📵</span><div><div class="ix">Нічний режим на екранах</div><div class="iw">Синє світло → безсоння (ризик ВИСОКИЙ)</div></div></div>
+<div class="it"><span class="ii">📖</span><div><div class="ix">Книжка 15-20 хв замість скролінгу</div><div class="iw">Стабільний дофамін vs спайки від соцмереж</div></div></div>
+<div class="it"><span class="ii">🧘</span><div><div class="ix">Стретчинг або дихання 4-7-8</div><div class="iw">Парасимпатична НС → режим відновлення</div></div></div>
+</details>
+
+<details class="c6"><summary><span class="ic">☕</span><div><div class="tl">Напої</div></div></summary>
+<div class="fb"><div class="ft">Щодня</div>
+<div class="fo">Кава 2-3 чашки (до 15:00, після їжі, без цукру)</div>
+<div class="fo">Какао + кокосове молоко + кориця</div>
+<div class="fo">Вода + лимон / лайм / м'ята / ягоди / імбир</div>
+<div class="fo">Комбуча (до 5 г цукру на порцію)</div>
+<div class="fo">Матча латте на кокосовому молоці</div></div>
+<div class="fb"><div class="ft">Ввечері (без кофеїну)</div>
+<div class="fo">Ройбуш</div>
+<div class="fo">Золоте молоко (кокосове + куркума + перець)</div>
+<div class="fo">Кістковий бульйон 200-300 мл</div></div>
+<div class="fr">⛔ Ніколи: соки, солодкі газовані, енергетики, молоко</div>
+</details>
+
+<details class="c7"><summary><span class="ic">📅</span><div><div class="tl">Тижневий ритм</div></div></summary>
+<div class="wd"><div class="wb" style="background:#10B981">Пн</div><div><div class="wn">Силове (верх тіла)</div><div class="wt">+ додатковий перекус з білком</div></div></div>
+<div class="wd"><div class="wb" style="background:#34D399">Вт</div><div><div class="wn">Ходьба 40-60 хв</div><div class="wt">Активне відновлення</div></div></div>
+<div class="wd"><div class="wb" style="background:#10B981">Ср</div><div><div class="wn">Силове (ноги)</div><div class="wt">Генетична сила. Присідання, станова</div></div></div>
+<div class="wd"><div class="wb" style="background:#34D399">Чт</div><div><div class="wn">Відпочинок / йога</div><div class="wt">Кортизол ↓. Або довга прогулянка</div></div></div>
+<div class="wd"><div class="wb" style="background:#10B981">Пт</div><div><div class="wn">Силове або HIIT 20 хв</div><div class="wt">Мітохондріальний біогенез</div></div></div>
+<div class="wd"><div class="wb" style="background:#34D399">Сб</div><div><div class="wn">Активний відпочинок</div><div class="wt">Плавання, велосипед</div></div></div>
+<div class="wd"><div class="wb" style="background:#CBD5E1">Нд</div><div><div class="wn">Повний відпочинок</div><div class="wt">Тіло росте під час відпочинку</div></div></div>
+</details>
+
+<details class="c8"><summary><span class="ic">📈</span><div><div class="tl">Набір ваги</div></div></summary>
+<div class="ri"><div class="rm">2800-3000 ккал на день</div><div class="rd">Зараз ~1800-2200. Додай перекус + збільш порції</div></div>
+<div class="ri"><div class="rm">130-150 г білка на день</div><div class="rd">Білок → м'язи. Без білка калорії → живіт</div></div>
+<div class="ri"><div class="rm">Силові 3 рази на тиждень</div><div class="rd">Без тренувань надлишок калорій = жир на животі</div></div>
+<div class="ri"><div class="rm">Їж навіть коли не хочеш</div><div class="rd">СДВГ = забуваєш їсти. Постав таймер на перекус</div></div>
+<div class="ri"><div class="rm">Жири — друг, цукор — ворог</div><div class="rd">Олія, горіхи, авокадо = калорії без інсуліну</div></div>
+</details>
+
+<details class="c9"><summary><span class="ic">🛒</span><div><div class="tl">Завжди вдома</div></div></summary>
+<div class="gc"><div class="gn">Білок</div><div class="gl">Яйця, курка, лосось, сардини, печінка</div></div>
+<div class="gc"><div class="gn">Жири</div><div class="gl">Оливкова олія, авокадо, горіхи (волоські, мигдаль, бразильські), гарбузове насіння</div></div>
+<div class="gc"><div class="gn">Вуглеводи</div><div class="gl">Гречка, вівсянка, батат</div></div>
+<div class="gc"><div class="gn">Овочі</div><div class="gl">Шпинат, броколі, цибуля, часник</div></div>
+<div class="gc"><div class="gn">Фрукти</div><div class="gl">Банани, заморожені ягоди, лимони</div></div>
+<div class="gc"><div class="gn">Напої</div><div class="gl">Какао, комбуча, кокосове молоко, ройбуш</div></div>
+</details>
+
+<details class="c1"><summary><span class="ic">🍫</span><div><div class="tl">Солодке</div></div></summary>
+<div class="fb"><div class="ft">Щодня можна</div>
+<div class="fo">Темний шоколад 70-85% — 2-3 квадратики</div>
+<div class="fo">Банан + мигдальне масло</div>
+<div class="fo">Ягоди + кокосові вершки + горіхи</div>
+<div class="fo">Фініки 2-3 шт + горіхи</div></div>
+<div class="fb"><div class="ft">Можна готувати</div>
+<div class="fo">Банановий «айс» (заморожений банан + какао)</div>
+<div class="fo">Енергетичні кульки (фініки + горіхи + какао)</div>
+<div class="fo">Чіа-пудинг (чіа + кокосове молоко + ягоди)</div>
+<div class="fo">Запечене яблуко з горіхами і корицею</div></div>
+<div class="fr">⛔ Завжди їж солодке ПІСЛЯ білка/жиру, ніколи натще</div>
+</details>
+
+<div class="foot">
+На основі ДНК-тесту Humess G001133275<br>
+Ціль: 64 → 75 кг через білок + жири + силові<br>
+HOMA-IR 0.91 · HbA1c 5.3% · Інсулін 4.2
+</div>
+
+</body>
+</html>
